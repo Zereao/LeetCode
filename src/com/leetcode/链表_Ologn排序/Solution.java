@@ -8,57 +8,61 @@ class Solution {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        ListNode head = s.build(1, 5, 2, 6, 6, 7, 3, 9);
+        ListNode head = s.build(2, 1);
         System.out.println(s.print(head));
         ListNode newHead = s.sortList(head);
         System.out.println(s.print(newHead));
     }
 
     public ListNode sortList(ListNode head) {
-        if (head == null) {
-            return null;
+        if (head == null || head.next == null) {
+            return head;
         }
-        ListNode end = head;
-        while (end.next != null) {
-            end = end.next;
-        }
-        return this.sortList(head, end);
+        ListNode mid = this.getMiddleNode(head);
+        ListNode rightStart = mid.next;
+        mid.next = null;
+        ListNode leftHead = this.sortList(head);
+        ListNode rightHead = this.sortList(rightStart);
+        return this.merge(leftHead, rightHead);
     }
 
-    private ListNode sortList(ListNode start, ListNode end) {
-        ListNode mid = this.getMiddleNode(start, end);
-        if (mid == null) {
-            return start;
-        }
-        this.sortList(start, mid);
-        this.sortList(mid.next, end);
-        return this.merge(start, end);
-    }
-
-
-    private ListNode getMiddleNode(ListNode start, ListNode end) {
+    private ListNode getMiddleNode(ListNode start) {
         ListNode fast = start, slow = start;
-        while (fast.next != null && fast.next != end && fast.next.next != end) {
+        while (fast.next != null && fast.next.next != null) {
             fast = fast.next.next;
             slow = slow.next;
         }
-        return fast == slow ? null : slow;
+        return slow;
     }
 
-    private ListNode merge(ListNode start, ListNode end) {
-        ListNode mid = this.getMiddleNode(start, end);
-        if (mid == null) {
-            return start;
+    private ListNode merge(ListNode leftHead, ListNode rightHead) {
+        if (leftHead == rightHead) {
+            return leftHead;
         }
-        ListNode leftStart = start, leftEnd = mid;
-        ListNode rightStart = mid.next, rightEnd = end;
+        ListNode leftStart = leftHead;
+        ListNode rightStart = rightHead;
         ListNode tmp = new ListNode(0);
         ListNode head = tmp;
-        while (leftStart != leftEnd && rightStart != rightEnd) {
-            ListNode minNode = leftStart.val < rightStart.val ? leftStart : rightStart;
-            tmp.next = new ListNode(minNode.val);
+        while (leftStart != null && rightStart != null) {
+            int minVal;
+            if (leftStart.val <= rightStart.val) {
+                minVal = leftStart.val;
+                leftStart = leftStart.next;
+            } else {
+                minVal = rightStart.val;
+                rightStart = rightStart.next;
+            }
+            tmp.next = new ListNode(minVal);
+            tmp = tmp.next;
+        }
+        while (leftStart != null) {
+            tmp.next = new ListNode(leftStart.val);
             tmp = tmp.next;
             leftStart = leftStart.next;
+        }
+        while (rightStart != null) {
+            tmp.next = new ListNode(rightStart.val);
+            tmp = tmp.next;
             rightStart = rightStart.next;
         }
         return head.next;
