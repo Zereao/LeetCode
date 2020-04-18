@@ -1,5 +1,8 @@
 package com.leetcode.链表_Ologn排序;
 
+import com.leetcode.common.ListNode;
+import com.leetcode.common.Utils;
+
 /**
  * @author Zereao
  * @version 2020/4/16 18:36
@@ -8,10 +11,10 @@ class Solution {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        ListNode head = s.build(2, 1);
-        System.out.println(s.print(head));
+        ListNode head = Utils.build(2, 1);
+        System.out.println(Utils.print(head));
         ListNode newHead = s.sortList(head);
-        System.out.println(s.print(newHead));
+        System.out.println(Utils.print(newHead));
     }
 
     public ListNode sortList(ListNode head) {
@@ -66,31 +69,5 @@ class Solution {
             rightStart = rightStart.next;
         }
         return head.next;
-    }
-
-    private ListNode build(int... vals) {
-        if (vals == null || vals.length <= 0) {
-            return null;
-        }
-        ListNode head = new ListNode(vals[0]);
-        ListNode p = head;
-        for (int i = 1; i < vals.length; i++) {
-            p.next = new ListNode(vals[i]);
-            p = p.next;
-        }
-        return head;
-    }
-
-    private String print(ListNode head) {
-        if (head == null) {
-            return "null";
-        }
-        StringBuilder sb = new StringBuilder().append(head.val);
-        head = head.next;
-        while (head != null) {
-            sb.append(" -> ").append(head.val);
-            head = head.next;
-        }
-        return sb.toString();
     }
 }

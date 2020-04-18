@@ -1,6 +1,9 @@
 package com.leetcode.链表_插入排序;
 
 
+import com.leetcode.common.ListNode;
+import com.leetcode.common.Utils;
+
 /**
  * @author Zereao
  * @version 2020/4/17 10:38
@@ -9,10 +12,10 @@ class Solution {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        ListNode h = s.build(1, 1);
-        System.out.println(s.print(h));
+        ListNode h = Utils.build(1, 1);
+        System.out.println(Utils.print(h));
         ListNode h1 = s.insertionSortList(h);
-        System.out.println(s.print(h1));
+        System.out.println(Utils.print(h1));
     }
 
     public ListNode insertionSortList(ListNode head) {
@@ -46,29 +49,4 @@ class Solution {
         return head;
     }
 
-    private ListNode build(int... vals) {
-        if (vals == null || vals.length <= 0) {
-            return null;
-        }
-        ListNode head = new ListNode(vals[0]);
-        ListNode p = head;
-        for (int i = 1; i < vals.length; i++) {
-            p.next = new ListNode(vals[i]);
-            p = p.next;
-        }
-        return head;
-    }
-
-    private String print(ListNode head) {
-        if (head == null) {
-            return "null";
-        }
-        StringBuilder sb = new StringBuilder().append(head.val);
-        head = head.next;
-        while (head != null) {
-            sb.append(" -> ").append(head.val);
-            head = head.next;
-        }
-        return sb.toString();
-    }
 }

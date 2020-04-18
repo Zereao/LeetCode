@@ -1,5 +1,7 @@
 package com.leetcode.二叉树的最小深度;
 
+import com.leetcode.common.TreeNode;
+
 /**
  * @author Zereao
  * @version 2020/4/16 11:30
