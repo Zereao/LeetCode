@@ -37,10 +37,6 @@ public class Utils {
         return str == null || str.trim().length() <= 0;
     }
 
-    public static boolean isEmpty(Object[] objs) {
-        return objs == null || objs.length <= 0;
-    }
-
     public static boolean isEmpty(Collection<?> collection) {
         return collection == null || collection.isEmpty();
     }
