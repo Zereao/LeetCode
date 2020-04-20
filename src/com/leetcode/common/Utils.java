@@ -1,5 +1,7 @@
 package com.leetcode.common;
 
+import java.util.Collection;
+
 /**
  * @author Zereao
  * @version 2020/4/18 20:54
@@ -29,5 +31,17 @@ public class Utils {
             head = head.next;
         }
         return sb.toString();
+    }
+
+    public static boolean isEmpty(String str) {
+        return str == null || str.trim().length() <= 0;
+    }
+
+    public static boolean isEmpty(Object[] objs) {
+        return objs == null || objs.length <= 0;
+    }
+
+    public static boolean isEmpty(Collection<?> collection) {
+        return collection == null || collection.isEmpty();
     }
 }
