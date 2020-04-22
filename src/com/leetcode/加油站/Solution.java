@@ -21,7 +21,11 @@ class Solution {
             int totalGas = 0;
             int tmp = 0;
             boolean flag = true;
+            // 确保每次最多走N步
             while (tmp < n) {
+                /* 核心步骤，tmp 代表 出发后，走了多少步
+                 * 假如 n = 6，从 3 出发，那走了 5步 的时候，下标走到了 3+5 = 8
+                 * 实际上应该映射到 (3+5)%6 = 2 */
                 int index = (i + tmp) % n;
                 totalGas = totalGas + gas[index] - cost[index];
                 if (totalGas < 0) {
