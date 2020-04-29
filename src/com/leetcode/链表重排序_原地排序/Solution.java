@@ -10,7 +10,7 @@ import com.leetcode.common.Utils;
 class Solution {
 
     public static void main(String[] args) {
-        ListNode head = Utils.build(1, 4, 2, 3);
+        ListNode head = Utils.buildList(1, 4, 2, 3);
         Solution s = new Solution();
         s.reorderList(head);
         System.out.println(Utils.print(head));

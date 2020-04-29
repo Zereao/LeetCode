@@ -7,7 +7,11 @@ import java.util.Collection;
  * @version 2020/4/18 20:54
  */
 public class Utils {
-    public static ListNode build(int... values) {
+    public static int[] buildArray(int... values) {
+        return values;
+    }
+
+    public static ListNode buildList(int... values) {
         if (values == null || values.length <= 0) {
             return null;
         }

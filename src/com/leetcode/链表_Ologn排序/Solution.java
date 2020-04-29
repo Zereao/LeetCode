@@ -11,7 +11,7 @@ class Solution {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        ListNode head = Utils.build(2, 1);
+        ListNode head = Utils.buildList(2, 1);
         System.out.println(Utils.print(head));
         ListNode newHead = s.sortList(head);
         System.out.println(Utils.print(newHead));

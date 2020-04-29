@@ -12,7 +12,7 @@ class Solution {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        ListNode h = Utils.build(1, 1);
+        ListNode h = Utils.buildList(1, 1);
         System.out.println(Utils.print(h));
         ListNode h1 = s.insertionSortList(h);
         System.out.println(Utils.print(h1));

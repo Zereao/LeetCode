@@ -12,7 +12,7 @@ import com.leetcode.common.Utils;
 class Solution {
 
     public static void main(String[] args) {
-        ListNode head = Utils.build(1, 2);
+        ListNode head = Utils.buildList(1, 2);
         head.next.next = head;
         Solution s = new Solution();
         ListNode m = s.getMeetNode(head);
